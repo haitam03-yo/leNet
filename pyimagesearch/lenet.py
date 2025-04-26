@@ -1,5 +1,6 @@
 from torch.nn import Module
 from torch.nn import Conv2d, ReLU, MaxPool2d, Linear, Flatten, LogSoftmax
+from torch import flatten
 
 class Lenet(Module):
     def __init__(self, num_channels, classes):
@@ -32,7 +33,7 @@ class Lenet(Module):
         x = self.relu_2(x)
         x = self.max_pool_2(x)
 
-        x = Flatten(x, 1)
+        x = flatten(x, 1) 
         x = self.FC_1(x)
 
         x = self.FC_2(x)
